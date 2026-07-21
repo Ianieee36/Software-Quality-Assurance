@@ -1,5 +1,7 @@
 namespace ENSE707_Week1_Lab
 {
+
+    // ------ Activity 7: Improve Code ------ //
     public class BankAccount
     {
         public string AccountHolder { get; }

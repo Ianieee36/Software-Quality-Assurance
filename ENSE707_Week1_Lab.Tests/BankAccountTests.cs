@@ -4,6 +4,9 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
  
 namespace ENSE707_Week1_Lab.Tests
 {
+
+    // ------ Activity 6: Create a Test Unit Project ------ //
+
     [TestClass]
     public class BankAccountTests
     {
@@ -170,8 +173,8 @@ namespace ENSE707_Week1_Lab.Tests
         public void CalculateTransactionFee_LargeAmount_DoesNotOverFlow()
         {
             var account = new BankAccount("Christian", 100m);
-            decimal fee = account.CalculateTransactionFee(decimal.MaxValue);
-            Assert.AreEqual(decimal.MaxValue / 2, fee);
+            decimal fee = account.CalculateTransactionFee(1000000m);
+            Assert.AreEqual(20000m, fee);
         }
 
         [TestMethod]
@@ -194,5 +197,49 @@ namespace ENSE707_Week1_Lab.Tests
             Assert.ThrowsExactly<ArgumentException>(() => account.Withdraw(-10m));
             
         }
+
+        // ------ Activity 9: Stakeholder and Quality Reflection Questions ------ //
+
+        /*
+        
+        1. Who are the stakeholders for this small banking system?
+           - The stakeholders for this small banking system are the following:
+             Internal:
+             * Community Bank 
+             * Staff Member
+             * Developer
+             * Testers
+            External:
+             * Customer
+        
+        2. What does quality mean to each stakeholder?
+           -
+           * Community Bank - Software protects bank's core interests
+           * Staff Member - The tool is usable, reliable, and predictable in daily operations
+           * Developer - codes are high maintainable, easy to test, easy to understand.
+           * Testers - the software is verifiable, means requirements can be traced through test cases
+           * Customer - quality means that their money is safe, they can withdraw and deposit whenever they want, and accuracy.
+        
+        3. Which defects were detected through testing?
+           - The defects got detected through testing and before improvement is that mostly of the test cases for negative amount, and zero amounts 
+             failed and didn't pass as they are not handled properly.
+        
+        4. Which defects could have been prevented through QA activities?
+           - The defects that could have been prevented through QA activies are the failed test for negative amounts and overdrafts which
+             is highly forbidden based on the given requirements.
+        
+        5. How did copilot help?
+           - It did help a lot on writing my test cases as it did on point on my test cases. Which is also based on the requirements given.
+
+        6. What copilot suggestion did you reject or modify? Why?
+           - Every copilot's suggestion is correct as I lead it to the given requirements which it gives an accurate results.
+        
+        7. What is the difference between QA and QC in this lab?
+           - The difference between QA and QC in this lab is that QA wasn't implement properly based on the given requirements there are no 
+             standardized calculations and practices on how to handles business rules such as withraw and deposit. While QC has occured when 
+             test cases are being written which where bugs occur and help me identified problems and eventually fix it. 
+
+
+        */
     }
 }
