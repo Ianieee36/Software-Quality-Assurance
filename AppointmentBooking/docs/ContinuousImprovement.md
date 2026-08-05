@@ -113,3 +113,15 @@ compilation are the same thing as correct code. A team habit of writing that
 next specific test — especially right after extending a shared class — is a
 cheap, repeatable way to keep this kind of defect from accumulating silently
 as a system grows.
+
+
+## Agile and DevOps Quality Practices for this project
+
+| Practice | How It Could Be Used in This Project | 
+| :--- | :--- |
+| Sprint Planning | Select a small set of features and quality tasks for the week |
+| Daily stand-up | Discuss progress, blockers, and testing issues |
+| Definition of Done | Feature is complete only when coded, reviewed, tested, and documented | 
+| Continuous Integration | Automatically run tests when code is pushed |
+| Regression Testing | Re-run existing tests after each change |
+| Retrospective | Review what went well and what should improve | 
