@@ -14,21 +14,16 @@ namespace ENSE707_AppointmentBooking
             if (request == null)
                 return BookingResult.MissingRequest();
  
-            // Defense in depth: Patient already guards against a blank ID at
-            // construction time, but re-checking here means this rule is
-            // enforced by the booking process itself, not only by assuming
-            // every caller constructs Patient correctly.
             if (string.IsNullOrWhiteSpace(request.Patient.Id))
                 return BookingResult.InvalidPatientId();
  
             DateTime earliestAllowedDate = DateTime.Today.AddDays(_policy.MinimumNoticeDays);
+
             if (request.RequestedDate.Date < earliestAllowedDate)
                 return BookingResult.InsufficientNotice(_policy.MinimumNoticeDays);
  
             if (!request.Doctor.IsAvailableOn(request.RequestedDate))
             {
-                // Distinguish WHY it's unavailable so the message stays actionable
-                // rather than a generic "can't book" response.
                 if (request.Doctor.AvailableSlots <= 0)
                     return BookingResult.NoAvailability(request.Doctor);
  
@@ -36,8 +31,25 @@ namespace ENSE707_AppointmentBooking
             }
  
             request.Doctor.ReserveSlot(request.RequestedDate);
+
+            var appointment = new Appointment(
+                Guid.NewGuid().ToString(),
+                request.Doctor,
+                request.Patient,
+                request.RequestedDate
+            );
  
-            return BookingResult.Booked(request.Patient, request.Doctor, request.RequestedDate);
+            return BookingResult.Booked(appointment);
+        }
+
+        public void CancelAppointment(Appointment appointment)
+        {
+            if(appointment == null) 
+                throw new ArgumentNullException(nameof(appointment), "A valid appointment is required to cancel a booking. Please provide an existing appointment.");
+            
+            appointment.Cancel();
+            
+            appointment.Doctor.ReleaseSlot(appointment.AppointmentDate);
         }
     }
 }

@@ -75,6 +75,21 @@ namespace ENSE707_AppointmentBooking
                 _dailyBookingCounts[day] = bookedToday + 1;
             }
         }
+
+        public void ReleaseSlot(DateTime date)
+        {
+            lock (_slotLock)
+            {
+                var day = date.Date;
+                int bookedToday = _dailyBookingCounts.TryGetValue(day, out var count) ? count : 0;
+
+                AvailableSlots++;
+
+                if(bookedToday > 0)
+                    _dailyBookingCounts[day] = bookedToday - 1;
+
+            }
+        }
         
     }
 
