@@ -65,4 +65,20 @@ public sealed class ReservationServiceTests
         Assert.IsFalse(result.Success);
         StringAssert.Contains(result.Message, "member details are required.");
     }
+
+    // AC-05
+    [TestMethod]
+    public void ReserveBook_MemberCannotReserveMoreThanOneBook_ReservationFails()
+    {
+        var member = new Member("M001", "Christian Cantos");
+        var book1 = new Book("B001", "Software Team Project");
+        var book2 = new Book("B002", "Software Architecture");
+        var service = new ReservationService();
+
+        service.ReserveBook(book1, member);
+        ReservationResult result = service.ReserveBook(book2, member);
+
+        Assert.IsFalse(result.Success);
+        StringAssert.Contains(result.Message,"member has an active reservation");
+    }
 }

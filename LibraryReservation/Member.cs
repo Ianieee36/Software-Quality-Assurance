@@ -4,6 +4,7 @@ namespace LibraryReservation
     {
         public string Id { get; }
         public string FullName { get; }
+        public bool HasReservations { get; private set;}
 
         public Member(string id, string fullName)
         {
@@ -15,6 +16,17 @@ namespace LibraryReservation
 
             Id = id;
             FullName = fullName; 
+            HasReservations = false;
+        }
+
+        public bool HasActiveReservation()
+        {
+            return HasReservations;
+        }
+
+        public void MarkAsReserved()
+        {
+            HasReservations = true;
         }
     }
 }
