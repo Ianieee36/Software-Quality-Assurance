@@ -1,0 +1,4 @@
+<Solution>
+    <Project Path="PrescriptionRefill.Tests/PrescriptionRefill.Tests.csproj" />
+    <Project Path="PrescriptionRefill/PrescriptionRefill.csproj" />
+</Solution>

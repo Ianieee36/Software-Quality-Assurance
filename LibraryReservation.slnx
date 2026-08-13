@@ -1,3 +1,4 @@
 <Solution>
   <Project Path="LibraryReservation/LibraryReservation.csproj" />
+  <Project Path="LibraryReservation.Tests/LibraryReservation.Tests.csproj" />
 </Solution>
