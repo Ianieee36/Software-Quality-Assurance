@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="AppointmentBooking/AppointmentBooking.csproj" />
+  <Project Path="AppointmentBooking.Tests/AppointmentBooking.Tests.csproj" />
+  <Project Path="AppointmentBooking.Metrics/AppointmentBooking.Metrics.csproj" />
+  <Project Path="AppointmentBooking.Metrics.Tests/AppointmentBooking.Metrics.Tests.csproj" />
+</Solution>

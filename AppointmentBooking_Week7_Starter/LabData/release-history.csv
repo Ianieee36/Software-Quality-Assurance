@@ -1,0 +1,6 @@
+release,releaseDate,validSuccessRatePercent,p50LatencyMs,p95LatencyMs,peakHourSuccessRatePercent
+2.0.0,2026-05-18,95,520,950,90
+2.1.0,2026-06-22,93,560,1100,86
+2.2.0,2026-07-20,92,610,1250,84
+2.3.0,2026-08-17,90,700,1450,80
+

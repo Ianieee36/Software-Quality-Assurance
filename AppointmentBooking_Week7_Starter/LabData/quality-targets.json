@@ -1,0 +1,6 @@
+{
+  "minimumValidSuccessRatePercent": 90.0,
+  "maximumP95LatencyMs": 1500.0,
+  "minimumPeakHourSuccessRatePercent": 80.0
+}
+
